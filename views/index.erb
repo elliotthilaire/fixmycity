@@ -17,37 +17,14 @@
 					  </tr>
 
 					  <% @reports.each do |report| %>
-  						<h3><%= report.description %></h3>
- 
+  						<tr class="clickableRow()" id="<%= report.id %>"></tr>
+ 						<td><%= report.created_at %></td>
+					    <td>Bus way</td>
+					    <td>Bus stop</td>
+					    <td><%= report.status %></td>
+					    <td><a href="#" class="btn btn-primary"><i class="fa fa-file-image-o"></i></a></td>
+					</tr>
 						<% end %>
-					  <tr class='clickableRow'>
-					    <td>12:24pm 12/07/2014</td>
-					    <td>Carindale Busway Interchange</td>
-					    <td>Bus stop</td>
-					    <td>Open</td>
-					    <td><a href="#" class="btn btn-primary"><i class="fa fa-file-image-o"></i></a></td>
-					  </tr>
-					  <tr>
-					    <td>10:24am 12/07/2014</td>
-					    <td>Carindale park</td>
-					    <td>Bus stop</td>
-					    <td>Resolved</td>
-					    <td><a href="#" class="btn btn-primary"><i class="fa fa-file-image-o"></i></a></td>
-					  </tr>
-					  <tr>
-					    <td>8:23pm 11/07/2014</td>
-					    <td>Brisbane Botanic Gardens</td>
-					    <td>Park</td>
-					    <td>Resolved</td>
-					    <td><a href="#" class="btn btn-primary"><i class="fa fa-file-image-o"></i></a></td>
-					  </tr>
-					  <tr>
-					    <td>1:45pm 11/07/2014</td>
-					    <td>Queen street bus stop C</td>
-					    <td>Bus stop</td>
-					    <td></td>
-					    <td><a href="#" class="btn btn-primary"><i class="fa fa-file-image-o"></i></a></td>
-					  </tr>
 					</table>
 
 					
@@ -68,6 +45,10 @@
 
 	<!-- Leaflet script -->
 	<script>
+		var data = <%= @reports.to_json %>;
+		console.log(data);
+
+
 		var map = L.map('map').setView([51.505, -0.09], 13);
 		L.tileLayer('http://{s}.tiles.mapbox.com/v3/melatonind.iofl09ec/{z}/{x}/{y}.png', {
 		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -90,26 +71,24 @@
 		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
 		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
-		// location
 
-		// prototype for iteration of icons
-		//  for (int i = 0; i < array.length; i++) {
-		// 	L.marker([array.x, array.y]), {icon: type}).addTo(map);
-		// }
-		L.marker([51.5, -0.09], {icon: busstop}).addTo(map);
-		L.marker([51.5, -0.08], {icon: park}).addTo(map);
-		L.marker([51.5, -0.07], {icon: busstop}).addTo(map);
-		L.marker([51.5, -0.06], {icon: park}).addTo(map);
+		// create markers from data set 
+		 for (var i = 0; i < data.length; i++) {
+			L.marker([data[i].latitude, data[i].longitude], {icon: busstop}).addTo(map);
+		}
 
-		// Clickable row script
+		
+
 		jQuery(document).ready(function($) {
-	      $(".clickableRow").click(function() {
-	            map.panTo(new L.LatLng(51.5, -0.09));
+	      $(".clickableRow()").click(function() {
+	      		var i = $(this).attr("id");
+	      		console.log(data[i].latitude);
+	            map.panTo(new L.LatLng(data[i].latitude, data[i].longitude), 13);
 	            var imgUrl = "images/img/images.jpg";
     			$(".images").html("<img src='" + imgUrl + "' alt='description' class='img-responsive'/>");
 	      });
 
 	      // Automatically click on first column
-	      $('.clickableRow').trigger('click');
+	      $('.clickableRow(0)').trigger('click');
 		});
 		</script>
