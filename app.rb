@@ -55,6 +55,12 @@ get '/test_findstop' do
   find_closest_busstop(-27.5584, 153.07714)
 end
 
+get '/data' do
+   array = Report.all
+   # array must become JSON
+   array.to_json
+end
+
 get '/' do
   erb :index
 end
