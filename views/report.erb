@@ -38,6 +38,14 @@ getLocation(showPosition);
 		    console.log("Latitude: " + position.coords.latitude);
 		    console.log("Longitude: " + position.coords.longitude);
 		}
+		
+		function populateInputs(geo) {
+$('input[name="latitude"]').val(geo.coords.latitude);
+$('input[name="Longitude"]').val(geo.coords.Longitude);
+$('input[name="Accuracy"]').val(geo.coords.Accuracy);
+
+}
+		
 </script>
 
 
