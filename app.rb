@@ -14,7 +14,7 @@ class Post
 end
 
 get '/hi' do
-  "Hello World!"
+   erb :index
 end
 
 
