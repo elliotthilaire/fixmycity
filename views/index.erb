@@ -107,19 +107,4 @@
 	      // Automatically click on first column
 	      $('.clickableRow').trigger('click');
 		});
-
-		getLocation();
-
-		function getLocation() {
-		    if (navigator.geolocation) {
-		        navigator.geolocation.getCurrentPosition(showPosition);
-		    } else { 
-		        x.innerHTML = "Geolocation is not supported by this browser.";
-		    }
-		}
-
-		function showPosition(position) {
-		    console.log("Latitude: " + position.coords.latitude);
-		    console.log("Longitude: " + position.coords.longitude);
-		}
 		</script>
