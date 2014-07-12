@@ -1,6 +1,17 @@
 require 'sinatra'
 require 'data_mapper'
+require 'dm-sqlite-adapter'
 
+require_relative 'configure'
+
+## This is an example model.
+class Post
+  include DataMapper::Resource
+  property :id, Serial
+  property :title, String
+  property :body, Text
+  property :created_at, DateTime
+end
 
 get '/hi' do
   "Hello World!"
