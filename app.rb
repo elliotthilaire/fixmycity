@@ -17,6 +17,8 @@ def find_closest_busstop(lat,long)
     min_idx = $bus_stops.length + 1
     min_dist = 1e20
     $bus_stops.each_with_index {|val, i| 
+        # TODO This is ugly, we should use column names for lookups,
+        # not indexes
         bslat = val[6].to_f
         bslong = val[7].to_f
         sm = val[6].to_f + val[7].to_f
