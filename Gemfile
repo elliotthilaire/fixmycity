@@ -5,6 +5,7 @@ gem "sinatra"
 gem "data_mapper"
 gem 'dm-sqlite-adapter'
 gem "mini_magick"
+gem "uuid"
 
 group :development, :test do
   gem 'shotgun'

@@ -2,7 +2,9 @@ require 'sinatra'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'csv'
-require 'SecureRandom'
+require 'uuid'
+
+
 
 require_relative 'configure'
 require_relative 'helpers'
@@ -32,8 +34,10 @@ post '/report' do
 
   # Instead of filename, use a uuid
   # but make sure to retain the file extension 
+  uuid = UUID.new
+
   filename = params[:file][:filename]
-  filename = SecureRandom.uuid() << File.extname(filename)
+  filename = uuid.generate << File.extname(filename)
 
   file = params[:file][:tempfile]
 
