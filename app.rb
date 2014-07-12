@@ -1,26 +1,11 @@
 require 'sinatra'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
-require 'carrierwave/datamapper'
 require 'csv'
 
 require_relative 'configure'
 require_relative 'helpers'
 require_relative 'models'
-
-## This is an example model.
-class Report
-  include DataMapper::Resource
-  property :id, Serial
-  property :description, String  
-  property :latitude, Float
-  property :longitude, Float
-  property :contact, String
-  property :status, Enum[ :new, :open, :closed, :invalid ], default: :open
-  property :created_at, DateTime
-  mount_uploader :photo, ImageUploader
-  property :photo_url, String
-end
 
 get '/test_findstop' do
   "Hello World!"
