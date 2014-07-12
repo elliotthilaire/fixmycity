@@ -48,3 +48,30 @@ background: -ms-linear-gradient(top, #d6f9ff 0%,#9ee8fa 100%); /* IE10+ */
 background: linear-gradient(to bottom, #d6f9ff 0%,#9ee8fa 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6f9ff', endColorstr='#9ee8fa',GradientType=0 ); /* IE6-9 */
 }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif!important;
+}
+h1 {
+	font-size: 100px;
+	margin-bottom: 50px;
+}
+
+
+
+
+
+
+
