@@ -14,6 +14,10 @@ Html templates go in views. Using the erb templating language.
 
 Assets (images, css, js) go in public.
 
+## Seed Data.
+
+run
+   ruby seed.rb
 
 ## Usage
 
