@@ -4,6 +4,22 @@ require 'dm-sqlite-adapter'
 
 require_relative 'configure'
 
+require 'csv'
+$bus_stops = CSV.read('raw_data/brisbane_bus_stops.csv')
+
+def find_closest_busstop(lat,long)
+    s = ""
+    for rec in $bus_stops
+        #puts "#{rec}"
+        s = s << "hello\n"
+    end
+    s
+    $bus_stops.each_with_index {|val, i| 
+        s = s << "hello\n" 
+    }
+    s
+end
+
 ## This is an example model.
 class Post
   include DataMapper::Resource
@@ -11,6 +27,11 @@ class Post
   property :title, String
   property :body, Text
   property :created_at, DateTime
+end
+
+get '/test_findstop' do
+  "Hello World!"
+  find_closest_busstop(0.0,0.0)
 end
 
 get '/' do
