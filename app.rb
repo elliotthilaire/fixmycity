@@ -9,13 +9,11 @@ $bus_stops = CSV.read('raw_data/brisbane_bus_stops.csv')
 
 def find_closest_busstop(lat,long)
     s = ""
-    for rec in $bus_stops
-        #puts "#{rec}"
-        s = s << "hello\n"
-    end
-    s
     $bus_stops.each_with_index {|val, i| 
         s = s << "hello\n" 
+        if i > 10 
+            break
+        end
     }
     s
 end
