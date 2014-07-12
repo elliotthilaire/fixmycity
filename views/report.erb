@@ -78,7 +78,9 @@ getLocation(populateInputs)
             var reader = new FileReader();
             
             reader.onload = function (e) {
+				document.getElementById("blah").style.visibility = "visible";
                 $('#blah').attr('src', e.target.result);
+				
             }
             
             reader.readAsDataURL(input.files[0]);
