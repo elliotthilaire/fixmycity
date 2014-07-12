@@ -1,23 +1,56 @@
+
 <form action="/report" method="POST" enctype="multipart/form-data">
 
 	<input name="file" type="file" accept="image/*" capture="camera">
 
-	<h3 class="c"> Problem Category </h3>
-	<select class="form-control">
-	  <option>Park</option>
-	  <option>Train Station</option>
-	  <option>Bus Stop</option>
-	</select>
+<h3 class="c"> Problem Category </h3>
+<select class="form-control">
+  <option>Park</option>
+  <option>Train Station</option>
+  <option>Bus Stop</option>
+</select>
 
-	<h3 class="c"> Describe the Problem </h3>
-	<hr>
-	<textarea class="form-control" rows="3"></textarea>
-	<br>
-	<div class="row align-center">
-		<div class ="col-md-12">
-			<button type="submit" class="btn btn-default btn-lg">Submit</button>
-		</div>
+
+<input class="hidden" type="text" name="latitude" />
+<input  class="hidden" type="text" name="longitude"/>
+<input  class="hidden" type="text" name="accuracy"/>
+
+<h3 class="c"> Describe the Problem </h3>
+<hr>
+<textarea class="form-control" rows="3"></textarea>
+<br>
+<div class="row align-center">
+	<div class ="col-md-12">
+		<button type="submit" class="btn btn-default btn-lg">Submit</button>
 	</div>
+</div>
+<script>
+
+getLocation(showPosition);
+
+		function getLocation(c) {
+		    if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(c, null, { enableHighAccuracy: true });
+		    } else { 
+		        x.innerHTML = "Geolocation is not supported by this browser.";
+		    }
+		}
+
+		function showPosition(position) {
+		    console.log("Latitude: " + position.coords.latitude);
+		    console.log("Longitude: " + position.coords.longitude);
+		}
+		
+		function populateInputs(geo) {
+$('input[name="latitude"]').val(geo.coords.latitude);
+$('input[name="longitude"]').val(geo.coords.longitude);
+$('input[name="accuracy"]').val(geo.coords.accuracy);
+}
+	
+getLocation(populateInputs)	
+
+</script>
+
 
 </form>
 
