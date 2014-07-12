@@ -5,6 +5,8 @@
 				<h1>Overview</h1>
 			</div>
 				<div class="col-sm-8">
+					<div class="overview_table"></div>
+
 					<table class="table table-bordered table-hover" name="overview_table">
 					  <tr class="active">
 					    <th>Time/Date</th>
@@ -46,14 +48,14 @@
 					
 				</div>
 				<div class="col-sm-4">
-					images
+					<center><div class="images"></div></center>
 				</div>
 		</div> <!-- End of content -->
 
 		<div class="row">
 			<div class="col-sm-12">
 
-				<div id="map" style="height: 400px"></div>
+				<div id="map" style="height: 400px; margin-top: 20px; margin-bottom: 20px;"></div>
 				
 			</div>
 		</div>
@@ -98,16 +100,12 @@
 		jQuery(document).ready(function($) {
 	      $(".clickableRow").click(function() {
 	            console.log("hi");
-	            map.panTo(new L.LatLng(40.737, -73.923));
-	            L.marker([40.737, -73.923], {icon: park}).addTo(map);
+	            map.panTo(new L.LatLng(51.5, -0.09));
+	            var imgUrl = "images/img/images.jpg";
+    			$(".images").html("<img src='" + imgUrl + "' alt='description' class='img-responsive'/>");
 	      });
-		});
 
-		// Click first row on load
-		$(document).ready(function () {    
-		    $("#link_to_content").click(function () {     
-		        alert("you clicked!");
-		    });
-		    $('#link_to_content').trigger('click');
+	      // Automatically click on first column
+	      $('.clickableRow').trigger('click');
 		});
 		</script>
