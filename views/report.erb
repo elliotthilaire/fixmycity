@@ -16,10 +16,10 @@
   
 
 <h3 class="c"> Problem Category </h3>
-<select class="form-control">
-  <option>Park</option>
-  <option>Train Station</option>
-  <option>Bus Stop</option>
+<select class="form-control" name="category">
+  <option value="Park">Park</option>
+  <option value="Train Station">Train Station</option>
+  <option value="Bus Stop">Bus Stop</option>
 </select>
 
 
@@ -27,9 +27,9 @@
 <input  class="hidden" type="text" name="longitude"/>
 <input  class="hidden" type="text" name="accuracy"/>
 
-<h3 class="c"> Describe the Problem </h3>
+<h3 class="c"> Optional Description</h3>
 <hr>
-<textarea class="form-control" rows="3"></textarea>
+<textarea class="form-control" name="description" rows="3"></textarea>
 <br>
 <div class="row align-center">
 	<div class ="col-md-12">
