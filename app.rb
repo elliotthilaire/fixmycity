@@ -2,6 +2,8 @@ require 'sinatra'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'csv'
+require 'carrierwave/datamapper'
+require 'SecureRandom'
 
 require_relative 'configure'
 require_relative 'helpers'
@@ -24,27 +26,32 @@ get '/' do
 end
 
 get '/report' do
-	erb :report
+  erb :report
 end
 
 post '/report' do
 
-    filename = params[:file][:filename]
-    file = params[:file][:tempfile]
+  # Instead of filename, use a uuid
+  # but make sure to retain the file extension 
+  filename = params[:file][:filename]
+  filename = SecureRandom.uuid() << File.extname(filename)
 
-	Report.create(
-   		description: params['description'],
-   		latitude: params['latitude'],
-   		longitude: params['longitude'],
-   		contact: params['contact'],
-   		photo_url: "./public/images/img/#{filename}"
-   	)
+  file = params[:file][:tempfile]
+
+  # Try to save the file first, if that succeeds, 
+  # then try to insert the db record.
+  File.open("./public/images/img/#{filename}", 'wb') do |f|
+    f.write(file.read)
+  end
+
+  Report.create(
+     description: params['description'],
+     latitude: params['latitude'],
+     longitude: params['longitude'],
+     contact: params['contact'],
+     photo_url: "./public/images/img/#{filename}"
+  )
  
-	File.open("./public/images/img/#{filename}", 'wb') do |f|
-		f.write(file.read)
-	end
-
-  
 end
 
 
