@@ -4,6 +4,7 @@ require 'dm-sqlite-adapter'
 require 'carrierwave/datamapper'
 
 require_relative 'configure'
+require_relative 'helpers'
 
 require 'csv'
 $bus_stops = CSV.read('raw_data/brisbane_bus_stops.csv', headers:true)
