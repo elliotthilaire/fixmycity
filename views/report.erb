@@ -7,11 +7,11 @@
 
 <form id="form1" action="/report" method="POST" enctype="multipart/form-data" runat="server">
 
-	<input name="file" type="file" accept="image/*" capture="camera" id="imgInp">
+	<input name="file" type="file" accept="image/*" capture="camera" id="imgInp" onclick="myFunction()">
   
 	<div class= "row align-center">
 			<div class ="col-md-6 col-md-offset-3">
-			<img id="blah" src="#" alt="your image"  class="img-responsive thumbnail"/>
+			<img hidden id="blah" src="#" alt="your image"  class="img-responsive thumbnail"/>
 			</div>
 		<hr>
 	</div>
@@ -66,7 +66,9 @@ $('input[name="accuracy"]').val(geo.coords.accuracy);
 	
 getLocation(populateInputs)	
 
-
+function myFunction() {
+    var x = document.getElementById("blah").innerHTML = <img id="blah" src="#" alt="your image"  class="img-responsive thumbnail"/>;
+}
 
     function readURL(input) {
         if (input.files && input.files[0]) {
