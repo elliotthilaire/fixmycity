@@ -67,8 +67,10 @@ $('input[name="accuracy"]').val(geo.coords.accuracy);
 getLocation(populateInputs)	
 
 function myFunction() {
-    var x = document.getElementById("blah").innerHTML = '<img id="blah" src="#" alt="your image"  class="img-responsive thumbnail"/>';
+    var x = document.getElementById("blah").innerHTML
+	x.hidden = false; 
 }
+
 
     function readURL(input) {
         if (input.files && input.files[0]) {
