@@ -96,8 +96,8 @@
 				map.panTo(new L.LatLng(data[i].latitude, data[i].longitude), 13);
 
 				// append image
-				var imgUrl = "images/img/images.jpg";
-				$(".images").html("<img src='" + imgUrl + "' alt='description' class='img-responsive'/>");
+				var imgUrl = "images/test-user-images/image-" + i + ".jpg";
+				$(".images").html("<a href=" + imgUrl + " data-lightbox='image' data-title=" + data[i].description + "><img src='" + imgUrl + "' alt=" + data[i].description + " class='img-responsive'/></a><p><h5>Description:</h5><br>" + data[i].description + "</p>");
 			});
 
 	       // Automatically click on first column
