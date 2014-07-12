@@ -47,15 +47,14 @@ post '/report' do
     f.write(file.read)
   end
 
-  Report.create(
+
+  report = Report.create!(
      description: params['description'],
      latitude: params['latitude'],
      longitude: params['longitude'],
      contact: params['contact'],
      photo_url: "./public/images/img/#{filename}"
   )
-
-  erb :successfulsubmission
  
 end
 
