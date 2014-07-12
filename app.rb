@@ -2,7 +2,6 @@ require 'sinatra'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'csv'
-require 'carrierwave/datamapper'
 require 'SecureRandom'
 
 require_relative 'configure'
