@@ -7,3 +7,18 @@ Caleb Hattingh
 Josh Donnelly
 
 Fix My City
+
+
+## Usage
+
+Install Ruby.
+
+Install dependencies automatically
+
+    bundle install
+
+Run a local development server. Shotgun will reload the server when ever files are changed.
+
+    shotgun app.rb
+
+
