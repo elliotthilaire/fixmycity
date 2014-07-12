@@ -25,6 +25,6 @@ Install dependencies automatically
 
 Run a local development server. Shotgun will reload the server when ever files are changed.
 
-    shotgun app.rb
+    bundle exec shotgun app.rb
 
 
