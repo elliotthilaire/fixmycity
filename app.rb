@@ -48,6 +48,7 @@ class Report
   property :status, Enum[ :new, :open, :closed, :invalid ], default: :open
   property :created_at, DateTime
   mount_uploader :photo, ImageUploader
+  property :photo_url, String
 end
 
 get '/test_findstop' do
@@ -74,15 +75,21 @@ get '/report' do
 end
 
 post '/report' do
-   # This is where the logic goes to 
-   # handle the post data
-   Report.create(
-   	description: params['description'],
-   	latitude: params['latitude'],
-   	longitude: params['longitude'],
-   	contact: params['contact'],
-   	photo: params['photo']
+
+    filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+
+	Report.create(
+   		description: params['description'],
+   		latitude: params['latitude'],
+   		longitude: params['longitude'],
+   		contact: params['contact'],
+   		photo_url: "./public/images/img/#{filename}"
    	)
+ 
+	File.open("./public/images/img/#{filename}", 'wb') do |f|
+		f.write(file.read)
+	end
   
 end
 
