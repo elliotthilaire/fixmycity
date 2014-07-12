@@ -63,6 +63,7 @@ get '/data' do
 end
 
 get '/' do
+  @reports = Report.all
   erb :index
 end
 
