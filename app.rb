@@ -53,7 +53,7 @@ post '/report' do
      latitude: params['latitude'],
      longitude: params['longitude'],
      contact: params['contact'],
-     photo_url: "./public/images/img/#{filename}"
+     photo_url: filename
   )
  
 end
