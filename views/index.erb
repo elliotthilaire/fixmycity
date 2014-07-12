@@ -1,5 +1,7 @@
-<script>var data = <%= @reports.to_json %>;
-		console.log(data);</script>
+<script>
+	var data = <%= @reports.to_json %>;
+	console.log(data);
+</script>
 
 <!-- Central content -->
 	<div class="container">
@@ -8,7 +10,6 @@
 				<h1>Overview</h1>
 			</div>
 				<div class="col-sm-8">
-					<div class="overview_table"></div>
 
 					<table class="table table-bordered table-hover" name="overview_table">
 					  <tr class="active">
@@ -19,15 +20,19 @@
 					    <th>Open image</th>
 					  </tr>
 
-					  <% @reports.each do |report| %>
-  						<tr class="clickableRow" id="<%= report.id %>">
- 						<td><%= report.created_at %></td>
-					    <td>Bus way</td>
-					    <td>Bus stop</td>
-					    <td><%= report.status %></td>
-					    <td><a href="#" class="btn btn-primary"><i class="fa fa-file-image-o"></i></a></td>
-					</tr>
-						<% end %>
+					  <script>
+					  for (var i = 0; i < 10; i++) {
+					  	document.write("<tr class='clickableRow' id='" + data[i].id + "'>");
+					  	document.write("<td>"+ data[i].created_at + "</td>");
+					  	document.write("<td>Bus way</td>");
+					  	document.write("<td>Bus stop</td>");
+					  	document.write("<td>" + data[i].status + "</td>");
+					  	document.write("<td><a href='#'' class='btn btn-primary'><i class='fa fa-file-image-o'></i></a></td>");
+					  	document.write("</tr>");
+					  }
+					  </script>
+
+					  
 					</table>
 
 					
@@ -88,7 +93,6 @@
 				i -= 1;
 
 				// pan to location
-				console.log(data[i].latitude);
 				map.panTo(new L.LatLng(data[i].latitude, data[i].longitude), 13);
 
 				// append image
