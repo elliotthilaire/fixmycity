@@ -3,20 +3,49 @@
 	console.log(data);
 </script>
 
+<script>
+  $(function() {
+    $( "#progressbar" ).progressbar({
+      value: 13
+    });
+  });
+</script>
+
 <!-- Central content -->
-	<div class="container">
 		<div class = "row">
-			<div class="col-sm-12">
-				<h1 class="text-center"><strong>Fix My City!</strong></h1>
-				<p>
-					Found an issue with your local environment? Tell us and we'll fix it today.
+			<div class="col-sm-12 text-center">
+				<h1>Fix My City!</h1>
+				<p><h3>
+					Found an issue with your local environment?
+					<br>Tell us and we'll fix it today.
 				</p>
 			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-4 console">
+				<h4 class="consoleTitle">Open incidents:</h4>
+				<h5>15%</h5>
+				<div id="progressbar" class="progressbar"></div>
+			</div>
+			<div class="col-sm-4 console">
+				<h4 class="consoleTitle">Current status:</h4>
+				<h4>5 <span class="open-text">open</span> incidents</h4>
+				<h4>350 <span class="resolved-text">resolved</span> incidents</h4>
+			</div>
+			<div class="col-sm-4 console">
+				<h4 class="consoleTitle">Average time to resolve:</h4>
+				<h2>36 hours</h2>
+			</div>
+		</div>
+		<hr>
+
+
 				
-			
+			<div class="row">
 				<div class="col-sm-8">
 
-					<table class="table table-bordered table-hover" name="overview_table">
+					<table name="overview_table" class="table table-hover">
 					  <tr class="active">
 					    <th>Time/Date</th>
 					    <th>Location</th>
@@ -26,7 +55,7 @@
 					  </tr>
 
 					  <script>
-					  for (var i = 0; i < 10; i++) {
+					  for (var i = 0; i < 5; i++) {
 					  	document.write("<tr class='clickableRow' id='" + data[i].id + "'>");
 					  	document.write("<td>"+ data[i].created_at + "</td>");
 					  	document.write("<td>Bus way</td>");
@@ -54,7 +83,6 @@
 				
 			</div>
 		</div>
-	</div>
 
 	<!-- Leaflet script -->
 	<script>
@@ -69,8 +97,6 @@
 		    iconUrl: 'images/markers/busstop.png',
 
 		    iconSize:     [32, 37], // size of the icon
-		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
 
 		var park = L.icon({
@@ -96,7 +122,7 @@
 				i -= 1;
 
 				// pan to location
-				map.panTo(new L.LatLng(data[i].latitude, data[i].longitude), 13);
+				map.setView(new L.LatLng(data[i].latitude, data[i].longitude), 13);
 
 				// append image
 				var imgUrl = "images/img/" + data[i].photo_url;
