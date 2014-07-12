@@ -41,8 +41,8 @@ getLocation(showPosition);
 		
 		function populateInputs(geo) {
 $('input[name="latitude"]').val(geo.coords.latitude);
-$('input[name="Longitude"]').val(geo.coords.Longitude);
-$('input[name="Accuracy"]').val(geo.coords.Accuracy);
+$('input[name="longitude"]').val(geo.coords.longitude);
+$('input[name="accuracy"]').val(geo.coords.accuracy);
 }
 	
 getLocation(populateInputs)	
