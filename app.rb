@@ -47,11 +47,25 @@ post '/report' do
     f.write(file.read)
   end
 
+  # Hard-coded stuff below is for bus stops only
+  closest = find_closest_busstop(params['latitude'].to_f, params['longitude'].to_f)
+  name = closest[1]
+  street = closest[2]
+  suburb = closest[5]
+  lat = closest[6].to_f
+  lng = closest[7].to_f
+
+  ent_description = name + '; ' + street + '; ' + suburb
 
   report = Report.create!(
+     entity_type: params['category'],
+     entity_description: ent_description,
      description: params['description'],
-     latitude: params['latitude'],
-     longitude: params['longitude'],
+     latitude: lat,
+     longitude: lng,
+     submitted_latitude: params['latitude'],
+     submitted_longitude: params['longitude'],
+     detection_accuracy_m: params['accuracy'],
      contact: params['contact'],
      photo_url: filename
   )
