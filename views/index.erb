@@ -43,13 +43,7 @@
 					  </tr>
 					</table>
 
-					<script>
-					jQuery(document).ready(function($) {
-					      $(".clickableRow").click(function() {
-					            console.log("hi");
-					      });
-					});
-					</script>
+					
 				</div>
 				<div class="col-sm-4">
 					images
@@ -60,40 +54,60 @@
 			<div class="col-sm-12">
 
 				<div id="map" style="height: 400px"></div>
-				<script>
-				var map = L.map('map').setView([51.505, -0.09], 13);
-				L.tileLayer('http://{s}.tiles.mapbox.com/v3/melatonind.iofl09ec/{z}/{x}/{y}.png', {
-				    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-				    maxZoom: 18
-				}).addTo(map);
 				
-				// define markers
-				var busstop = L.icon({
-				    iconUrl: 'images/markers/busstop.png',
-
-				    iconSize:     [32, 37], // size of the icon
-				    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-				    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-				});
-
-				var park = L.icon({
-				    iconUrl: 'images/markers/urbanpark.png',
-
-				    iconSize:     [32, 37], // size of the icon
-				    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-				    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-				});
-				// location
-
-				// prototype for iteration of icons
-				//  for (int i = 0; i < array.length; i++) {
-				// 	L.marker([array.x, array.y]), {icon: type}).addTo(map);
-				// }
-				L.marker([51.5, -0.09], {icon: busstop}).addTo(map);
-				L.marker([51.5, -0.08], {icon: park}).addTo(map);
-				L.marker([51.5, -0.07], {icon: busstop}).addTo(map);
-				L.marker([51.5, -0.06], {icon: park}).addTo(map);
-				</script>
 			</div>
 		</div>
 	</div>
+
+	<!-- Leaflet script -->
+	<script>
+		var map = L.map('map').setView([51.505, -0.09], 13);
+		L.tileLayer('http://{s}.tiles.mapbox.com/v3/melatonind.iofl09ec/{z}/{x}/{y}.png', {
+		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		    maxZoom: 18
+		}).addTo(map);
+		
+		// define markers
+		var busstop = L.icon({
+		    iconUrl: 'images/markers/busstop.png',
+
+		    iconSize:     [32, 37], // size of the icon
+		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		var park = L.icon({
+		    iconUrl: 'images/markers/urbanpark.png',
+
+		    iconSize:     [32, 37], // size of the icon
+		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+		// location
+
+		// prototype for iteration of icons
+		//  for (int i = 0; i < array.length; i++) {
+		// 	L.marker([array.x, array.y]), {icon: type}).addTo(map);
+		// }
+		L.marker([51.5, -0.09], {icon: busstop}).addTo(map);
+		L.marker([51.5, -0.08], {icon: park}).addTo(map);
+		L.marker([51.5, -0.07], {icon: busstop}).addTo(map);
+		L.marker([51.5, -0.06], {icon: park}).addTo(map);
+
+		// Clickable row script
+		jQuery(document).ready(function($) {
+	      $(".clickableRow").click(function() {
+	            console.log("hi");
+	            map.panTo(new L.LatLng(40.737, -73.923));
+	            L.marker([40.737, -73.923], {icon: park}).addTo(map);
+	      });
+		});
+
+		// Click first row on load
+		$(document).ready(function () {    
+		    $("#link_to_content").click(function () {     
+		        alert("you clicked!");
+		    });
+		    $('#link_to_content').trigger('click');
+		});
+		</script>
