@@ -63,11 +63,8 @@ get '/data' do
 end
 
 get '/' do
+  @reports = Report.all
   erb :index
-end
-
-get '/hi' do
-   erb :hi
 end
 
 get '/report' do
@@ -90,6 +87,7 @@ post '/report' do
 	File.open("./public/images/img/#{filename}", 'wb') do |f|
 		f.write(file.read)
 	end
+
   
 end
 
