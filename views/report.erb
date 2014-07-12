@@ -6,7 +6,7 @@
                 height: 100%;
                 margin: 0;
                 padding: 0;
-				/* opacity: .4;
+				/*opacity: .4;
 				filter: alpha(opacity=40); */
             }
 
@@ -29,11 +29,12 @@
 			z-index: 5;
 			}
 			
-			#row {
-			z-index: 5;
+			#container {
+			z-index:5;
 			}
         </style>
- 
+		
+<div id="container">
 <form id="form1" action="/report" method="POST" enctype="multipart/form-data" runat="server">
 
 	<div class= "row align-center">
@@ -42,7 +43,7 @@
 			<input name="file" type="file" accept="image/*" capture="camera" id="imgInp">
 			</div>
 		<hr>
-	
+	</div>
   
 
             <script>
@@ -84,9 +85,12 @@
 <hr>
 <textarea class="form-control" rows="3"></textarea>
 <br>
+<div class="row align-center">
 	<div class ="col-md-12">
 		<button type="submit" class="btn btn-default btn-lg">Submit</button>
 	</div>
+</div>
+
 </div>
 <script>
 
