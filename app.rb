@@ -13,8 +13,12 @@ class Post
   property :created_at, DateTime
 end
 
+get '/' do
+  erb :index
+end
+
 get '/hi' do
-   erb :index
+   erb :hi
 end
 
 
