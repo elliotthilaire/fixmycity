@@ -50,7 +50,7 @@
 				<div class="col-sm-4">
 					<center><div class="images"></div></center>
 				</div>
-		</div> <!-- End of content -->
+		</div>
 
 		<div class="row">
 			<div class="col-sm-12">
@@ -99,7 +99,6 @@
 		// Clickable row script
 		jQuery(document).ready(function($) {
 	      $(".clickableRow").click(function() {
-	            console.log("hi");
 	            map.panTo(new L.LatLng(51.5, -0.09));
 	            var imgUrl = "images/img/images.jpg";
     			$(".images").html("<img src='" + imgUrl + "' alt='description' class='img-responsive'/>");
@@ -108,4 +107,19 @@
 	      // Automatically click on first column
 	      $('.clickableRow').trigger('click');
 		});
+
+		getLocation();
+
+		function getLocation() {
+		    if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(showPosition);
+		    } else { 
+		        x.innerHTML = "Geolocation is not supported by this browser.";
+		    }
+		}
+
+		function showPosition(position) {
+		    console.log("Latitude: " + position.coords.latitude);
+		    console.log("Longitude: " + position.coords.longitude);
+		}
 		</script>
