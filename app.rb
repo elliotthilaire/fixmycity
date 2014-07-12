@@ -45,6 +45,15 @@ get '/hi' do
    erb :hi
 end
 
+get '/report' do
+	erb :report
+end
+
+post '/report' do
+   # This is where the logic goes to 
+   # handle the post data
+end
+
 
 # This is required, do not remove.
 # It tells datamapper that there are no more models to load.
