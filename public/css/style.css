@@ -1,3 +1,5 @@
 /* aligns something horizontally into the center */
 .c {text-align:center;
 }
+/* hides stuff */
+.hidden {visibility:hidden;}
