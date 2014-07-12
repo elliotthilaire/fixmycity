@@ -1,5 +1,4 @@
 <form>
-
 <input type="file" accept="image/*" capture="camera">
 
 
@@ -10,6 +9,10 @@
   <option>Bus Stop</option>
 </select>
 
+Latitude: <input type="text" name="latitude" />
+<input type="text" name="longitude"/>
+<input type="text" name="accuracy"/>
+
 <h3 class="c"> Describe the Problem </h3>
 <hr>
 <textarea class="form-control" rows="3"></textarea>
@@ -19,6 +22,26 @@
 		<button type="submit" class="btn btn-default btn-lg">Submit</button>
 	</div>
 </div>
+<script>
+
+getLocation();
+
+		function getLocation() {
+		    if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(showPosition);
+		    } else { 
+		        x.innerHTML = "Geolocation is not supported by this browser.";
+		    }
+		}
+
+		function showPosition(position) {
+		    console.log("Latitude: " + position.coords.latitude);
+		    console.log("Longitude: " + position.coords.longitude);
+		}
+</script>
+
+
+
 
 </form>
 
