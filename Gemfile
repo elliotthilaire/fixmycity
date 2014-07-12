@@ -5,6 +5,7 @@ gem "sinatra"
 gem "data_mapper"
 gem 'dm-sqlite-adapter'
 gem "carrierwave-datamapper"
+gem "mini_magick"
 
 group :development, :test do
   gem 'shotgun'

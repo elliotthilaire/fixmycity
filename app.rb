@@ -39,13 +39,13 @@ end
 class Report
   include DataMapper::Resource
   property :id, Serial
-  property :description, String
-  property :photo_url, String
+  property :description, String  
   property :latitude, Float
   property :longitude, Float
   property :contact, String
   property :status, Enum[ :new, :open, :closed, :invalid ], default: :open
   property :created_at, DateTime
+  mount_uploader :photo, ImageUploader
 end
 
 get '/test_findstop' do
@@ -68,7 +68,16 @@ end
 post '/report' do
    # This is where the logic goes to 
    # handle the post data
+   Report.create(
+   	description: params['description'],
+   	latitude: params['latitude'],
+   	longitude: params['longitude'],
+   	contact: params['contact'],
+   	photo: params['photo']
+   	)
+  
 end
+
 
 
 # This is required, do not remove.
