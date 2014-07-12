@@ -50,6 +50,8 @@ post '/report' do
      contact: params['contact'],
      photo_url: "./public/images/img/#{filename}"
   )
+
+  erb :successfulsubmission
  
 end
 
