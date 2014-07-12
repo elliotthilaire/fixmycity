@@ -24,11 +24,11 @@ Latitude: <input type="text" name="latitude" />
 </div>
 <script>
 
-getLocation();
+getLocation(showPosition);
 
-		function getLocation() {
+		function getLocation(c) {
 		    if (navigator.geolocation) {
-		        navigator.geolocation.getCurrentPosition(showPosition);
+		        navigator.geolocation.getCurrentPosition(c);
 		    } else { 
 		        x.innerHTML = "Geolocation is not supported by this browser.";
 		    }
