@@ -2,13 +2,11 @@ require 'sinatra'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'carrierwave/datamapper'
+require 'csv'
 
 require_relative 'configure'
 require_relative 'helpers'
-
-require 'csv'
-$bus_stops = CSV.read('raw_data/brisbane_bus_stops.csv', headers:true)
-
+require_relative 'models'
 
 ## This is an example model.
 class Report
