@@ -6,6 +6,7 @@ gem "data_mapper"
 gem 'dm-sqlite-adapter'
 gem "mini_magick"
 gem "uuid"
+gem "thin"
 
 group :development, :test do
   gem 'shotgun'
