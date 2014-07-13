@@ -38,7 +38,7 @@ Assets (images, css, js) go in public.
 ## To do
 
 - Map loads to London as the default location. (This is Young, I fixed this, Now the map show Brisbane)
-- not stored in database when you report a problem.
+- not stored in database when you report a problem. (After install data-mapper with this command "gem2.0 install data_mapper", it is working)
 
 
 
