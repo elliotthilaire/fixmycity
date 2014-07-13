@@ -58,6 +58,7 @@ post '/report' do
   ent_description = "#{name}; #{street}; #{suburb}"
 
   report = Report.create!(
+     created_at: DateTime.now,
      entity_type: params['category'],
      entity_description: ent_description,
      description: params['description'],
