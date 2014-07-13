@@ -54,11 +54,12 @@ opacity: 0.6;
 filter: alpha(opacity=60);
 }
 
-.white:active, .white:hover {
+.white:hover {
 color: black;
 opacity: 1.0;
 filter: alpha(opacity=100);
 }
+
 
 
 body,
