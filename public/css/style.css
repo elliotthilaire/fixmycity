@@ -50,8 +50,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009ec3 ', en
 
 .white {
 color:black;
-opacity: 0.85;
-filter: alpha(opacity=85);
+opacity: 0.88;
+filter: alpha(opacity=88);
 }
 
 
