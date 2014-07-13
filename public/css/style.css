@@ -85,6 +85,11 @@ filter: alpha(opacity=100);
 #blah {width:100%;
 }
 
+body{
+background-size:100%;                      /* <------ */
+background-repeat: no-repeat;
+}
+
 body,
 h1,
 h2,
