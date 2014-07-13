@@ -75,7 +75,11 @@ cursor:pointer;
 background-color:white;
 }
 
-.clickableRow, {
+body{
+background-size:100%;                     
+background-repeat: no-repeat;}
+
+.clickableRow {
 background-color:white;
 opacity: 1.0;
 filter: alpha(opacity=100);
@@ -85,10 +89,6 @@ filter: alpha(opacity=100);
 #blah {width:100%;
 }
 
-body{
-background-size:100%;                      /* <------ */
-background-repeat: no-repeat;
-}
 
 body,
 h1,
