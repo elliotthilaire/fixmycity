@@ -87,7 +87,7 @@ filter: alpha(opacity=100);
 
 body{
 background-size:100%;                      /* <------ */
-background-repeat': no-repeat;
+background-repeat: no-repeat;
 }
 
 body,
