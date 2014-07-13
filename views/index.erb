@@ -136,7 +136,7 @@
 			} else if (data[i].entity_type === "Park") {
 				type = park;
 			} else {
-				type = playground;
+				type = busstop;
 			}
 			L.marker([data[i].latitude, data[i].longitude], {icon: type }).addTo(map);
 			console.log(type);
@@ -156,7 +156,7 @@
 
 				// append image
 				var imgUrl = "images/img/" + data[i].photo_url;
-				$(".images").html("<a href=" + imgUrl + " data-lightbox='image' data-title=" + data[i].description + "><center><img src='" + imgUrl + "' alt=" + data[i].description + " class='img-responsive'/></center></a><p><h5>Description:</h5>" + data[i].description + "</p>");
+				$(".images").html("<a href=" + imgUrl + " data-lightbox='image' data-title=" + data[i].description + "><center><img src='" + imgUrl + "' alt='" + data[i].description + "' class='img-responsive'/></center></a><p><h5>Description:</h5>" + data[i].description + "</p>");
 			});
 
 	       // Automatically click on first column
