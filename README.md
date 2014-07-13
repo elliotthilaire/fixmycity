@@ -51,3 +51,6 @@ Assets (images, css, js) go in public.
 
 
 
+## License
+
+The MIT License
