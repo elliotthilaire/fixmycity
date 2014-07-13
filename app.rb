@@ -55,7 +55,7 @@ post '/report' do
   lat = closest[6].to_f
   lng = closest[7].to_f
 
-  ent_description = name + '; ' + street + '; ' + suburb
+  ent_description = "#{name}; #{street}; #{suburb}"
 
   report = Report.create!(
      entity_type: params['category'],
