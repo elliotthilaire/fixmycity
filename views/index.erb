@@ -25,7 +25,12 @@
 		<div class="row">
 			<div class="col-sm-4 console">
 				<h4 class="consoleTitle">Open incidents:</h4>
-				<h5>15%</h5>
+				<h5>
+					<script>
+
+					</script>
+
+				</h5>
 				<div id="progressbar" class="progressbar"></div>
 			</div>
 			<div class="col-sm-4 console">
@@ -58,9 +63,9 @@
 					  for (var i = 0; i < 5; i++) {
 					  	document.write("<tr class='clickableRow' id='" + data[i].id + "'>");
 					  	document.write("<td>"+ data[i].created_at + "</td>");
-					  	document.write("<td>Bus way</td>");
-					  	document.write("<td>Bus stop</td>");
-					  	document.write("<td>" + data[i].status + "</td>");
+					  	document.write("<td>" + data[i].entity_type + "</td>");
+					  	document.write("<td>" + data[i].entity_description + "</td>");
+					  	document.write("<td><span class='open-text'>" + data[i].status + "</td>");
 					  	document.write("<td><a href='#'' class='btn btn-primary'><i class='fa fa-file-image-o'></i></a></td>");
 					  	document.write("</tr>");
 					  }
@@ -95,21 +100,35 @@
 		// define markers
 		var busstop = L.icon({
 		    iconUrl: 'images/markers/busstop.png',
-
 		    iconSize:     [32, 37], // size of the icon
 		});
 
 		var park = L.icon({
 		    iconUrl: 'images/markers/urbanpark.png',
-
 		    iconSize:     [32, 37], // size of the icon
-		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
 
-		// create markers from data set 
-		 for (var i = 0; i < data.length; i++) {
-			L.marker([data[i].latitude, data[i].longitude], {icon: busstop}).addTo(map);
+		var trainstation = L.icon({
+		    iconUrl: 'images/markers/playground.png',
+		    iconSize:     [32, 37], // size of the icon
+		});
+
+		// create markers from data set
+
+		for (var i = 0; i < data.length; i++) {
+
+		 	var type;
+			if (data[i].entity_type === "Train Station") {
+				type = trainstation;
+			} else if (data[i].entity_type === "Bus Stop") {
+				type = busstop;
+			} else if (data[i].entity_type === "Park") {
+				type = park;
+			} else {
+				type = playground;
+			}
+			L.marker([data[i].latitude, data[i].longitude], {icon: type }).addTo(map);
+			console.log(type);
 		}
 
 
