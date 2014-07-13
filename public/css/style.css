@@ -16,6 +16,7 @@ background: linear-gradient(to bottom, #00b7ea 0%,#009ec3 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
 opacity: 0.4;
 filter: alpha(opacity=40);
+color:white;
 }
 
 .lightblue:hover, .lightblue:active,{
@@ -29,7 +30,10 @@ background: linear-gradient(to bottom, #00b7ea 0%,#009ec3 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
 opacity: 1.0;
 filter: alpha(opacity=100);
+color:white;
 }
+
+
 
 body,
 h1,
