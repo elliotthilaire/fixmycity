@@ -37,8 +37,8 @@ Assets (images, css, js) go in public.
 
 ## To do
 
-- Map loads to London as the default location.
-
+- Map loads to London as the default location. (This is Young, I will fix this)
+. not stored in database when you report a problem.
 
 
 
