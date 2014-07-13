@@ -3,6 +3,8 @@
 Fix My City! is a submission to the 2014 GovHack project.
 
 Our idea was to create a very simple mobile friendly webapp that allows members of the public to take photos of things that need attention in our city and upload them without having to provide all the details manually. These are populated automatically using Brisbane City Council data from http://data.gov.au 
+The specific data that is used includes geolocation data so that if a person submits a problem relating to a busstop, fixmycity automatically works out the bus stop the person is having a problem with.
+ 
 
 
 ## Team Rameelcajo
@@ -17,6 +19,7 @@ Caleb Hattingh
 
 Josh Donnelly
 
+Youngmin Kim
 
 ## Setup 
 
@@ -28,7 +31,7 @@ run bundle exec shotgun app.rb
 
 Open http://localhost:9393 in your browser
 
-## Explaination
+## Explanation
 
 Html templates go in views. Using the erb templating language.
 
