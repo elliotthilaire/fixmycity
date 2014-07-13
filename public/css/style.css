@@ -66,6 +66,19 @@ filter: alpha(opacity=100);
 cursor:pointer;
 }
 
+#table1:hover {
+opacity: 1.0;
+filter: alpha(opacity=100);
+cursor:pointer;
+}
+
+.clickableRow {
+opacity: 1.0;
+filter: alpha(opacity=100);
+}
+
+
+
 body,
 h1,
 h2,
