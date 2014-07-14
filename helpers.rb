@@ -2,6 +2,7 @@
 $bus_stops = CSV.read('raw_data/brisbane_bus_stops.csv', headers:true)
 $playgrounds = CSV.read('raw_data/playgrounds.csv', headers:true)
 $bbqs= CSV.read('raw_data/bbq.csv', headers:true)
+# There was some unicode problem in the public art CSV file.
 #$public_art= CSV.read('raw_data/public_art.csv', headers:true)
 $drinking_taps= CSV.read('raw_data/dataset_drinking_fountain_taps3.csv', headers:true)
 $parks= CSV.read('raw_data/parks.csv', headers:true)
@@ -15,34 +16,13 @@ $ferry_terminals= CSV.read('raw_data/ferry_terminals.csv', headers:true)
 $skate_parks= CSV.read('raw_data/skate_parks.csv', headers:true)
 
 def distance(lat1,long1,lat2,long2)
+    # Pythagorean distance, i.e. hypoteneuse
     (lat1-lat2)**2 + (long1-long2)**2
 end
 
-def find_closest_busstop(lat,long)
-    min_idx = $bus_stops.length + 1
-    min_dist = 1e20
-    $bus_stops.each_with_index {|val, i| 
-        # TODO This is ugly, we should use column names for lookups,
-        # not indexes
-        bslat = val[6].to_f
-        bslong = val[7].to_f
-        #s = s << sm.to_s << "\t" << val[6] << "\t" << val[7] << "<br>" # "hello\n" 
-        dist = distance(lat,long,bslat,bslong)
-        #print "#{i} = #{dist}\n"
-        if dist < min_dist
-            min_idx = i
-            min_dist = dist
-        end
-        #if i > 10 
-        #    break
-        #end
-    }
-    found = $bus_stops[min_idx]
-    #s = s << $bus_stops[min_idx].to_s
-    #s
-end
-
 def get_idx(type)
+    # Given a type, return the column indexes for a concatenated description
+    # and the column index for latitude and the one for longitude.
     if type == 'Bus stop'
         description = [1,2,5]
         lat=6
@@ -127,39 +107,47 @@ def get_idx(type)
     }
 end
 
-def get_csv_array(type)
-    if type == 'Bus Stop'
-        return $bus_stops
-    elsif type == 'Playground'
-        return $playgrounds
-    else
-        return $bus_stops
-    end
-end
-
 def find_closest(lat,long,type)
+    # Get the column numbers and CSV data for this type
     idx = get_idx(type)
-    csv_array = idx[:csvarray]# get_csv_array(type) # For bus stops, this is $bus_stops
+    # Extract the row data
+    csv_array = idx[:csvarray]
+    # Initialize "minimum distance" parameters.  These will be
+    # updated during the loop below.
     min_idx = csv_array.length + 1
     min_dist = 1e20
-    puts idx[:lat]
+    # Store the given (user-uploaded) latitude and longitude
     lat_idx = idx[:lat] # For bus stops, column 6  
     lng_idx = idx[:lng] # For bus stops, column 7
-    puts lat_idx
+    # Loop over the council data, compute distance to the
+    # user-supplied coordinates. Each time a smaller distance
+    # is found, store the index of the council data record that
+    # was closer.
     csv_array.each_with_index {|val, i| 
+        # Casting
         bslat = val[lat_idx].to_f
         bslong = val[lng_idx].to_f
+        # Calculate distance to user-provided coordinates
         dist = distance(lat,long,bslat,bslong)
+        # If this distance is smaller than the most up-to-date
+        # smallest value, then replace the stored one with this
+        # new one and store the row index
         if dist < min_dist
             min_idx = i
             min_dist = dist
         end
     }
+    # Whatever we are left with must be the closest thing, so
+    # get the record of council data. Now we extract the required
+    # columns out of the row.
     found = csv_array[min_idx]
+    # Build a description of the entity by concatenating several
+    # columns' data, according to what was defined in "get_idx"
     description = ""
     for i in idx[:description]
         description = description << "#{found[i]}" << '; '
     end
+    # Return a hash with the complete combined data
     return {
         :entity_type => type, 
         :entity_description => description,
