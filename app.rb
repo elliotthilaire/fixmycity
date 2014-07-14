@@ -47,22 +47,10 @@ post '/report' do
     f.write(file.read)
   end
 
-  # Hard-coded stuff below is for bus stops only
-#  closest = find_closest_busstop(params['latitude'].to_f, params['longitude'].to_f)
-#  name = closest[1]
-#  street = closest[2]
-#  suburb = closest[5]
-#  lat = closest[6].to_f
-#  lng = closest[7].to_f
-
   closest = find_closest(
       params['latitude'].to_f, 
       params['longitude'].to_f,
       params['category'])
-
-  puts "***"
-  puts closest
-  puts "***"
 
   ent_description = closest[:entity_description] # "#{name}; #{street}; #{suburb}"
   lat = closest[:lat]
