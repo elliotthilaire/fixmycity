@@ -4,20 +4,12 @@ require 'dm-sqlite-adapter'
 require 'csv'
 require 'uuid'
 
-
-
 require_relative 'configure'
 require_relative 'helpers'
 require_relative 'models'
 
-get '/test_findstop' do
-  "Hello World!"
-  find_closest_busstop(-27.5584, 153.07714)
-end
-
 get '/data' do
    array = Report.all
-   # array must become JSON
    array.to_json
 end
 
@@ -31,7 +23,6 @@ get '/report' do
 end
 
 post '/report' do
-
   # Instead of filename, use a uuid
   # but make sure to retain the file extension 
   uuid = UUID.new
@@ -73,8 +64,6 @@ post '/report' do
   erb :successfulsubmission
  
 end
-
-
 
 # This is required, do not remove.
 # It tells datamapper that there are no more models to load.
