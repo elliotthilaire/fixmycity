@@ -3,6 +3,10 @@
 Fix My City! is a submission to the 2014 [GovHack](http://www.govhack.org/) competition. It won [Best Use of Brisbane City Council
 Transportation Data](http://www.govhack.org/2014-winners/) 
 
+* [Project Page](http://hackerspace.govhack.org/content/fixmycity)
+* [Submission Video](http://youtu.be/zpNnu8wChVg)
+
+
 Our idea was to create a very simple mobile friendly webapp that allows members of the public to take photos of things that need attention in our city and upload them without having to provide all the details manually. These are populated automatically using Brisbane City Council data from http://data.gov.au.
 'Fix My City!' works by allowing a person to take an photo of a problem and submit it (like they would take a photo and upload it on facebook), thereby allowing a member of the public a simple, rapid way of informing their city council of a problem.
 'Fix My City!' uses a number of innovative features including the clever use of geolocation data so that if a person submits a problem relating to a busstop, "Fix My City!" automatically knows which the bus stop the person is having a problem with.
