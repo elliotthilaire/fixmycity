@@ -30,7 +30,7 @@ Install gems
     
     bundle install
 
-Launch the shotgun (shotgun will reload itself when files change during development)
+Launch shotgun (shotgun will reload itself when files change during development)
 
     bundle exec shotgun app.rb
 
