@@ -1,7 +1,7 @@
 # Fix My City!
 
 Fix My City! is a submission to the 2014 [GovHack](http://www.govhack.org/) competition. It won [Best Use of Brisbane City Council
-Transportation Data](http://www.govhack.org/2014-winners/) 
+Transportation Data](http://www.govhack.org/2014-winners/). 
 
 * [Project Page](http://hackerspace.govhack.org/content/fixmycity)
 * [Submission Video](http://youtu.be/zpNnu8wChVg)
@@ -17,12 +17,12 @@ This makes it simple for the council maintainence department to make an effectiv
 
 ## Team Rameelcajo
 
-* Randall Fernando
-* Mei Wang Brough-Smyth
-* Elliott Hilaire
-* Caleb Hattingh
+* [Randall Fernando](https://github.com/rfern)
+* [Mei Wang Brough-Smyth](https://github.com/melatonind)
+* [Elliott Hilaire](https://github.com/elliotthilaire)
+* [Caleb Hattingh](https://github.com/cjrh)
 * Josh Donnelly
-* Youngmin Kim
+* [Youngmin Kim](https://github.com/ymkim92)
 
 ## Requirements
 
